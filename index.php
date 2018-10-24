@@ -8,10 +8,17 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="style/w3.css">
     </head>
     <body>
+        <div class="w3-navbar" id="turinys">
+				<div id="virsutinisMeniu">
+                                            <li><a href="register.php" title="registracija">Registracija</a></li>
+                                            <li><a href="login.php" title="prisijungimas">Prisijungimas</a></li>
+                                            <li><a href="main.php" title="prisijungimas">Straipsniai</a></li>
+				</div>
+        </div>
         <?php
-        // put your code here
         ?>
     </body>
 </html>
