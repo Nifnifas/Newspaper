@@ -4,14 +4,14 @@
 
 session_start();
 // cia sesijos kontrole
-if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
-{ header("Location:logout.php");exit;}
+//if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
+//{ header("Location:articles.php");exit;}
 include("include/nustatymai.php");
 
 
 $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-	$query = "SELECT * "
-            . "FROM " . TBL_ARTICLES . " ORDER BY article_id ASC";
+	$query = "SELECT article_id, category_name, title, text, username "
+            . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . " WHERE fk_user_id = userid AND category = category_id ORDER BY article_id ASC";
 	$result = mysqli_query($db, $query);
 	if (!$result || (mysqli_num_rows($result) < 1))  
 			{echo "Klaida skaitant lentelę `articles`"; exit;}
@@ -27,14 +27,15 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     <body>
     <table style="border-width: 2px; border-style: dotted;"><tr><td>
          Atgal į [<a href="index.php">Pradžia</a>]
+        [<a href="newarticle.php">Naujas straipsnis</a>]
       </td></tr>
 	</table><br>
 <?php
 
     echo "<table>"; // start a table tag in the HTML
-
+    echo "<tr><td> </td><td>Name</td><td>So</td><td>kaip</td><td>va</td></tr>";
     while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
-        echo "<tr><td>" . $row['article_id'] . "</td><td>" . $row['category'] . "</td><td>" .$row['title'] . "</td><td>" .$row['text'] . "</td><td>" .$row['fk_user_id'] . "</td></tr>";  //$row['index'] the index here is a field name
+        echo "<tr><td>" . $row['article_id'] . "</td><td>" . $row['category_name'] . "</td><td>" .$row['title'] . "</td><td>" .$row['text'] . "</td><td>" .$row['username'] . "</td></tr>";  //$row['index'] the index here is a field name
     }
 
     echo "</table>"; //Close the table in HTML
@@ -44,3 +45,5 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 			
 			
         </div><br>
+</body>
+</html>
