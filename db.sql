@@ -29,9 +29,19 @@ CREATE TABLE IF NOT EXISTS `categories` (
 PRIMARY KEY (category_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `comments` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_comment_id` int(11) NOT NULL,
+  `comment` varchar(250) NOT NULL,
+  `sender_id` varchar(32) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fk_article_id` INT(3),
+  PRIMARY KEY (`comment_id`),
+  FOREIGN KEY (`fk_article_id`) REFERENCES articles(`article_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 --
--- Sukurta duomenų kopija lentelei `users`
---
+
 INSERT INTO `users` (`username`, `password`, `userid`, `userlevel`, `email`, `timestamp`) VALUES
 ('Valdytojas', '16c354b68848cdbd8f54a226a0a55b21', '7ed2b87b255a0348b61226bd7c2ed5b4', 5, 'demo@ktu.lt', 1330553708),
 ('Administratorius', '16c354b68848cdbd8f54a226a0a55b21', 'a2fe399900de341c39c632244eaf8483', 9, 'demo@ktu.lt', 1330553956),

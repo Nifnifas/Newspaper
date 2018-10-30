@@ -8,6 +8,7 @@ define("DB_NAME", "newspaper");
 define("TBL_USERS", "users");
 define("TBL_ARTICLES", "articles");
 define("TBL_CATEGORIES", "categories");
+define("TBL_COMMENTS", "comments");
 
 $user_roles=array(      // vartotojų rolių vardai lentelėse ir  atitinkamos userlevel reikšmės
 	"Administratorius"=>"9",
