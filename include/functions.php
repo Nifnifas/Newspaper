@@ -23,7 +23,7 @@ function checkname ($username){   // Vartotojo vardo sintakse
 				 "<font size=\"2\" color=\"#ff0000\">* Neįvestas vartotojo vardas</font>";
 			 "";
 			 return false;}
-            elseif (!preg_match("/^([0-9a-zA-Z])*$/", $username))  /* Check if username is not alphanumeric */ 
+            else if (!preg_match("/^([0-9a-zA-Z])*$/", $username))  /* Check if username is not alphanumeric */ 
 			{$_SESSION['name_error']=
 				"<font size=\"2\" color=\"#ff0000\">* Vartotojo vardas gali būti sudarytas<br>
 				&nbsp;&nbsp;tik iš raidžių ir skaičių</font>";

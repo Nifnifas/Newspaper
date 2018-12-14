@@ -16,7 +16,7 @@ $role="";
         echo "</td></tr><tr><td>";
         if ($_SESSION['user'] != "guest") echo "[<a href=\"useredit.php\">Redaguoti paskyrą</a>] &nbsp;&nbsp;";
         echo "[<a href=\"articlesList.php\">Straipsniai</a>] &nbsp;&nbsp;";
-        echo "[<a href=\"operacija2.php\">Demo operacija2</a>] &nbsp;&nbsp;";
+        echo "[<a href=\"teisiuLangas.php\">Sutekti teises</a>] &nbsp;&nbsp;";
      //Trečia operacija tik rodoma pasirinktu kategoriju vartotojams, pvz.:
         if (($userlevel == $user_roles["Dėstytojas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] )) {
             echo "[<a href=\"operacija3.php\">Demo operacija3</a>] &nbsp;&nbsp;";

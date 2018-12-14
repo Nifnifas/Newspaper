@@ -16,7 +16,7 @@ if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "register"))
   $_SESSION['name_error']="";
   $_SESSION['pass_error']="";
   $_SESSION['mail_error']="";
-  $user=strtolower($_POST['user']);
+  $user=strtolower($_POST['name']);
   $_SESSION['name_login']=$user;
   $pass=$_POST['pass'];$_SESSION['pass_login']=$pass;
   $mail=$_POST['email'];$_SESSION['mail_login']=$mail;   
@@ -58,7 +58,7 @@ if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "register"))
 		}
 		}
         // griztam taisyti
-         // session_regenerate_id(true);
+         //session_regenerate_id(true);
           header("Location:register.php");exit;
  
      ?>

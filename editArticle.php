@@ -8,11 +8,11 @@ if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
 { header("Location:logout.php");exit;}
 include("include/nustatymai.php");
             
-$_SESSION['art'] = $_SERVER['QUERY_STRING'];
+$_SESSION['art'] = $_POST['article_id'];
 
 $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 	$query = "SELECT article_id, category, title, text "
-            . "FROM " . TBL_ARTICLES . ", " . TBL_CATEGORIES . " WHERE article_id = $_SERVER[QUERY_STRING]  AND category = category_id";
+            . "FROM " . TBL_ARTICLES . ", " . TBL_CATEGORIES . " WHERE article_id = $_SESSION[art]  AND category = category_id";
 	$result = mysqli_query($db, $query);
 	if (!$result || (mysqli_num_rows($result) < 1))  
 			{echo "Klaida skaitant lentelę `articles`"; exit;}
@@ -38,8 +38,7 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
                                                     <form action="procArticleEdit.php" method="POST" class="editedarticle">              
                                                 <center style="font-size:18pt;"><b>Redaguoti straipsnį</b></center>
                                                 
-                                                                <p style="text-align:left;">ID:<br>
-                                                                <input class ="s1" name="id" type="text" value="<?php echo $_SERVER['QUERY_STRING']; ?>"><br>
+                                                                <input class ="s1" name="id" type="text" value="<?php echo $row['article_id']; ?>" hidden><br>
         							</p>
 								<p style="text-align:left;">Kategorija:<br>
                                                                 <input class ="s1" name="category" type="text" value="<?php echo $row['category']; ?>"><br>

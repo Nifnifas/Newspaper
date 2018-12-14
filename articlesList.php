@@ -18,14 +18,17 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 			{echo "Klaida skaitant lentelę `articles`"; exit;}
 ?>
 
-
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
-        <title>Straipsniai</title>
+        <title>Demo projektas</title>
         <link href="include/styles.css" rel="stylesheet" type="text/css" >
     </head>
     <body>
+        <table class="center" ><tr><td>
+            <center><img src="include/top.png"></center>
+        </td></tr><tr><td> 
+
     <table style="border-width: 2px; border-style: dotted;"><tr><td>
          Atgal į [<a href="index.php">Pradžia</a>]
         [<a href="newarticle.php">Naujas straipsnis</a>]
@@ -34,18 +37,20 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 <?php
 
     echo "<table>"; // start a table tag in the HTML
-    echo "<tr><td> </td><td>Name</td><td>So</td><td>kaip</td><td>va</td></tr>";
+    echo "<tr><td>ID</td><td>Kategorija</td><td>Antraštė</td><td>Santrumpa</td><td>Autorius</td><td>Data</td></tr>";
     while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
-        echo "<tr><td>" . $row['article_id'] . "</td><td>" . $row['category_name'] . "</td><td>" .$row['title'] . "</td><td>" .shorterText($row['text'], 7) 
-                . "</td><td>" . "<a href='read.php?$row[article_id]'>Skaityti straipsnį</a>" . "</td><td>" .$row['username'] . "</td><td>" .$row['time_stamp'] 
-                . "</td><td>" . "<a href='editArticle.php?$row[article_id]'>Redaguoti</a>" . "</td><td>" . "<a onclick=\"return confirm('Ar tikrai norite ištrinti?');\" href=\"procArticleDelete.php?$row[article_id]\">Šalinti</a>" . "</td></tr>";  //$row['index'] the index here is a field name
+        echo "<tr><td>" . $row['article_id'] . "</td><td>" . $row['category_name'] . "</td><td>" .$row['title'] . "</td><td>" .shorterText($row['text'], 7)
+                . "</td><td>" .$row['username'] . "</td><td>" .$row['time_stamp']
+                . "</td><td>" . "<form action='read.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button type='submit' name='submit'>Skaityti straipsnį</button></form>" 
+                . "</td><td>" . "<form action='editArticle.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button type='submit' name='submit'>Redaguoti</button></form>" 
+                . "</td><td>" . "<form action=\"procArticleDelete.php\" method=\"post\" onsubmit=\"return confirm('Ar tikrai norite ištrinti šį straipsnį?');\"><input type=\"submit\" value =\"Šalinti\"/><input type=\"hidden\" name=\"article_id\" value=\"$row[article_id]\">"
+                . "</form></td></tr>";
     }
     echo "</table>"; //Close the table in HTML
-
     mysqli_close($db);
 ?>
 			
 			
-        </div><br>
+    </div><br></table>
 </body>
 </html>

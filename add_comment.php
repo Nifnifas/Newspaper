@@ -16,11 +16,11 @@ $comment_content = '';
 
 if(empty($_POST["comment_content"]))
 {
- $error .= '<p class="text-danger">Comment is required</p>';
+ $error .= '<p class="text-danger">Jūs neįvedėte komentaro!</p>';
 }
 else
 {
- $comment_content = $_POST["comment_content"];
+    $comment_content = $_POST["comment_content"];
 }
 
 if($error == '')
