@@ -10,7 +10,7 @@ include("include/nustatymai.php");
 include("include/functions.php");
 $_SESSION['art'] = $_POST['article_id'];
 $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-	$query = "SELECT article_id, category_name, title, text, username, time_stamp "
+	$query = "SELECT article_id, category_name, title, text, username, time_stamp, views "
             . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . " WHERE article_id = $_SESSION[art]  AND fk_user_id = userid AND category = category_id ORDER BY article_id ASC";
 	$result = mysqli_query($db, $query);
 	if (!$result || (mysqli_num_rows($result) < 1))  
@@ -41,7 +41,7 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 <?php
 
     $row = mysqli_fetch_array($result);   //Creates a loop to loop through results
-
+    $viewsCount = $row['views']+1;
     echo "<div class=\"container\">
             <h2>$row[title]</h2>
             <h6>
@@ -50,7 +50,11 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
             </h6>
             <p class=\"lead\" align=\"left\">$row[text]</p>
             </div>";
+    $uql = "UPDATE " . TBL_ARTICLES . " SET `views`= '$viewsCount'"
+                . " WHERE `article_id` = '$_SESSION[art]'";
+    mysqli_query($db, $uql);
     mysqli_close($db);
+    
 ?>
         <br>	
         

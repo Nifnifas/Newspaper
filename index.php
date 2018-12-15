@@ -11,7 +11,7 @@ include("include/functions.php");
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
-        <title>Demo projektas</title>
+        <title>Žurnalo redakcijos IS</title>
         <link href="include/styles.css" rel="stylesheet" type="text/css" >
     </head>
     <body>
@@ -31,7 +31,8 @@ include("include/functions.php");
 ?>
                 <div style="text-align: center;color:green">
                     <br><br>
-                    <h1>Pradinis sistemos puslapis (index.php).</h1>
+                    <h1>Pradinis sistemos puslapis.</h1>
+                    <h1>Projektą parengė Lukas Krupenkinas, IFF-6/5</h1>
                 </div><br>
       <?php
           }                
