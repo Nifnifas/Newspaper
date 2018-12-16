@@ -8,7 +8,16 @@ session_start();
 //{ header("Location:articles.php");exit;}
 include("include/nustatymai.php");
 include("include/functions.php");
-$_SESSION['art'] = $_POST['article_id'];
+$user=$_SESSION['user'];
+$userid = $_SESSION['userid'];
+$userlevel=$_SESSION['ulevel'];
+if(isset($_POST['article_id'])){
+    $_SESSION['art'] = $_POST['article_id'];
+}
+else{
+    $_SESSION['art'];
+}
+
 $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 	$query = "SELECT article_id, category_name, title, text, username, time_stamp, views "
             . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . " WHERE article_id = $_SESSION[art]  AND fk_user_id = userid AND category = category_id ORDER BY article_id ASC";

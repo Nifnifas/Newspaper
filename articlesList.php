@@ -58,13 +58,24 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
         }
                 echo "</table>"; //Close the table in HTML
     }
-    else if ($user != "guest") {
+    else if ($user == "guest") {
         echo "<table>"; // start a table tag in the HTML
         echo "<tr><td>ID</td><td>Kategorija</td><td>Antraštė</td><td>Santrumpa</td><td>Autorius</td><td>Data</td></tr>";
         
         while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
             echo "<tr><td>" . $row['article_id'] . "</td><td>" . $row['category_name'] . "</td><td>" .$row['title'] . "</td><td>" .shorterText($row['text'], 7)
                 . "</td><td>" .$row['username'] . "</td><td>" .$row['time_stamp'] . "</td></tr>";
+        }
+        echo "</table>"; //Close the table in HTML
+    }
+    else{
+        echo "<table>"; // start a table tag in the HTML
+        echo "<tr><td>ID</td><td>Kategorija</td><td>Antraštė</td><td>Santrumpa</td><td>Autorius</td><td>Data</td></tr>";
+        
+        while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
+            echo "<tr><td>" . $row['article_id'] . "</td><td>" . $row['category_name'] . "</td><td>" .$row['title'] . "</td><td>" .shorterText($row['text'], 7)
+                . "</td><td>" .$row['username'] . "</td><td>" .$row['time_stamp'] . "</td><td>";
+            echo "<form action='read.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button type='submit' name='submit'>Skaityti straipsnį</button></form></td></tr>";
         }
         echo "</table>"; //Close the table in HTML
     }
