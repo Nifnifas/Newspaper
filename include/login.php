@@ -9,30 +9,30 @@ if (!isset($_SESSION)) { header("Location: logout.php");exit;}
 $_SESSION['prev'] = "login";
 include("include/nustatymai.php");
 ?>
-
-		<form action="proclogin.php" method="POST" class="login">             
-        <center style="font-size:18pt;"><b>Prisijungimas</b></center>
-        <p style="text-align:left;">Vartotojo vardas:<br>
-            <input class ="s1" name="user" type="text" value="<?php echo $_SESSION['name_login'];  ?>"/><br>
-            <?php echo $_SESSION['name_error']; 
-			?>
-        </p>
-        <p style="text-align:left;">Slaptažodis:<br>
-            <input class ="s1" name="pass" type="password" value="<?php echo $_SESSION['pass_login']; ?>"/><br>
-            <?php echo $_SESSION['pass_error']; 
-			?>
-        </p>  
-        <p style="text-align:left;">
-            <input type="submit" name="login" value="Prisijungti"/>   
-            <input type="submit" name="problem" value="Pamiršote slaptažodį?"/>   
-        </p>
-        <p>
- <?php
-			if ($uregister != "admin") { echo "<a href=\"register.php\">Registracija</a>";}
-			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"guest.php\">Svečias</a>";
-?>
-        </p>     
-    </form>
-	
-
-
+    <div class="container">
+        <h1 class="form-heading">Prisijungimo langas</h1>
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                        <p>Įveskite vartotojo vardą ir slaptažodį</p>
+                    </div>
+                    <form action="proclogin.php" method="POST"> 
+                        <div class="form-group">
+                            <input type="text" name="user" class="form-control" id="inputUsername" placeholder="Vartotojo vardas"/>
+                            <?php echo $_SESSION['name_error'];?>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="pass" class="form-control" id="inputPassword" placeholder="Slaptažodis"/>
+                            <?php echo $_SESSION['pass_error'];?>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm"><button type="submit" name="login" class="btn btn-primary">Prisijungti</button></div>
+                                <div class="col-sm"><input type="button" value="Svečias" name="guest" onclick="location.href='guest.php'" class="btn btn-primary"/></div>
+                                <div class="col-sm"><input type="button" value="Registracija" name="registracija" onclick="location.href='register.php'" class="btn btn-primary"/></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>          
+    </div>

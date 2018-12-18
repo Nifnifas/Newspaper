@@ -24,9 +24,9 @@ foreach($result as $row){
     if($userlevel == $user_roles[ADMIN_LEVEL]){
         $output .= '
             <div class="panel panel-default">
-             <div class="panel-heading">By <b>'.$row["username"].'</b> on <i>'.$row["date"].'</i></div>
-             <div class="panel-body">'.$row["comment"].'</div>
-                 <div class="panel-footer" align="right"><form action="delete_comment.php" method="post"><button type="submit" class="btn btn-default reply">Šalinti</button><input type="hidden" name="comment_id" value="'.$row["comment_id"].'"></form><button type="button" class="btn btn-default reply" id="'.$row["comment_id"].'">Atsakyti</button></div>
+             <div class="panel-heading"><b>'.$row["username"].'</b> <small class=\"text-muted\">(<i>'.$row["date"].'</i>)</small></div>
+             <div class="panel-body" align="left">'.$row["comment"].'</div>
+                 <div class="panel-footer" align="right"><form action="delete_comment.php" method="post"><button type="submit" onclick="return confirm(\'Ar tikrai norite ištrinti šį komentarą?\');" class="btn btn-default reply">Šalinti</button><input type="hidden" name="comment_id" value="'.$row["comment_id"].'"></form><button type="button" class="btn btn-default reply" id="'.$row["comment_id"].'">Atsakyti</button></div>
             </div>
             ';
         $output .= get_reply_comment($connect, $row["comment_id"]);
@@ -34,8 +34,8 @@ foreach($result as $row){
     else{
         $output .= '
             <div class="panel panel-default">
-             <div class="panel-heading">By <b>'.$row["username"].'</b> on <i>'.$row["date"].'</i></div>
-             <div class="panel-body">'.$row["comment"].'</div>
+             <div class="panel-heading"><b>'.$row["username"].'</b> <small class=\"text-muted\">(<i>'.$row["date"].'</i>)</small></div>
+             <div class="panel-body" align="left">'.$row["comment"].'</div>
                  <div class="panel-footer" align="right"><button type="button" class="btn btn-default reply" id="'.$row["comment_id"].'">Atsakyti</button></div>
             </div>
             ';
@@ -72,9 +72,9 @@ function get_reply_comment($connect, $parent_id = 0, $marginleft = 0)
       if($userlevel == $adminLevel){
             $output .= '
                 <div class="panel panel-default" style="margin-left:'.$marginleft.'px">
-                 <div class="panel-heading">By <b>'.$row["username"].'</b> on <i>'.$row["date"].'</i></div>
-                 <div class="panel-body">'.$row["comment"].'</div>
-                 <div class="panel-footer" align="right"><form action="delete_comment.php" method="post"><button type="submit" class="btn btn-default reply">Šalinti</button><input type="hidden" name="comment_id" value="'.$row["comment_id"].'"></form><button type="button" class="btn btn-default reply" id="'.$row["comment_id"].'">Atsakyti</button></div>
+                 <div class="panel-heading"><b>'.$row["username"].'</b> <small class=\"text-muted\">(<i>'.$row["date"].'</i>)</small></div>
+                 <div class="panel-body" align="left">'.$row["comment"].'</div>
+                 <div class="panel-footer" align="right"><form action="delete_comment.php" method="post"><button type="submit" class="btn btn-default reply" onclick="return confirm(\'Ar tikrai norite ištrinti šį komentarą?\');">Šalinti</button><input type="hidden" name="comment_id" value="'.$row["comment_id"].'"></form><button type="button" class="btn btn-default reply" id="'.$row["comment_id"].'">Atsakyti</button></div>
                 </div>
                 ';
             $output .= get_reply_comment($connect, $row["comment_id"], $marginleft);
@@ -82,8 +82,8 @@ function get_reply_comment($connect, $parent_id = 0, $marginleft = 0)
       else{
           $output .= '
                 <div class="panel panel-default" style="margin-left:'.$marginleft.'px">
-                 <div class="panel-heading">By <b>'.$row["username"].'</b> on <i>'.$row["date"].'</i></div>
-                 <div class="panel-body">'.$row["comment"].'</div>
+                 <div class="panel-heading"><b>'.$row["username"].'</b> <small class=\"text-muted\">(<i>'.$row["date"].'</i>)</small></div>
+                 <div class="panel-body" align="left">'.$row["comment"].'</div>
                  <div class="panel-footer" align="right"><button type="button" class="btn btn-default reply" id="'.$row["comment_id"].'">Atsakyti</button></div>
                 </div>
                 ';

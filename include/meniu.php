@@ -9,27 +9,83 @@ $userlevel=$_SESSION['ulevel'];
 $role="";
 {foreach($user_roles as $x=>$x_value)
 			      {if ($x_value == $userlevel) $role=$x;}
-} 
+}
+?>
+<html>
+    <head>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-     echo "<table width=100% border=\"0\" cellspacing=\"1\" cellpadding=\"3\" class=\"meniu\">";
-        echo "<tr><td>";
-        echo "Prisijungęs vartotojas: <b>".$user."</b>     Rolė: <b>".$role."</b> <br>";
-        echo "</td></tr><tr><td>";
-        if ($_SESSION['user'] != "guest") echo "[<a href=\"useredit.php\">Redaguoti paskyrą</a>] &nbsp;&nbsp;";
-        echo "[<a href=\"articlesList.php\">Straipsniai</a>] &nbsp;&nbsp;";
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.php">Pradinis<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="articlesList.php">Straipsniai</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Kategorijos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+
+          <?php if ($userlevel == $user_roles[ADMIN_LEVEL] ) { 
+              ?>
+            <li class="nav-item">
+                <a class="nav-link" href="newArticlesList.php">Nepatvirtinti straipsniai</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin.php">Vartotojų valdymas</a>
+            </li>
+          <?php } ?>
+        </ul>
+
+        <?php if ($_SESSION['user'] != "guest"){
+              ?> 
+        <form class="form-inline my-2 my-lg-0">
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo "$user";?></button>
+              <div class="dropdown-menu">
+                <p class="dropdown-item" align="center">Jūs esate: <b><?php echo "$role";?></b></p>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="newArticle.php">Įkelti straipsnį</a>
+                <a class="dropdown-item" href="myArticles.php">Mano straipsniai</a>
+                <a class="dropdown-item" href="useredit.php">Keisti paskyros duomenis</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Atsijungti</a>
+              </div>
+            </div>
+        </form>
+        <?php } if ($_SESSION['user'] == "guest"){
+            ?>
+        <form class="form-inline my-2 my-lg-0">
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo "$user";?></button>
+              <div class="dropdown-menu">
+                <p class="dropdown-item" align="center">Jūs esate: <b>Svečias</b></p>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Atsijungti</a>
+              </div>
+            </div>
+        </form>
+        <?php } ?>
+
+      </div>
+    </nav>
+    </body>
+</html>
+
+     
 
 
-     //Trečia operacija tik rodoma pasirinktu kategoriju vartotojams, pvz.:
-        if (($userlevel == $user_roles["Skaitytojas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] )) {
-            echo "[<a href=\"myArticles.php\">Mano straipsniai</a>] &nbsp;&nbsp;";
-        }   
-        //Administratoriaus sąsaja rodoma tik administratoriui
-        if ($userlevel == $user_roles[ADMIN_LEVEL] ) {
-            echo "[<a href=\"newArticlesList.php\">Nepatvirtinti straipsniai</a>] &nbsp;&nbsp;";
-                echo "[<a href=\"admin.php\">Vartotojų valdymas</a>] &nbsp;&nbsp;";
-        }
-        echo "[<a href=\"logout.php\">Atsijungti</a>]";
-      echo "</td></tr></table>";
-?>       
-    
- 

@@ -12,12 +12,13 @@ include("include/functions.php");
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
         <title>Žurnalo redakcijos IS</title>
-        <link href="include/styles.css" rel="stylesheet" type="text/css" >
+            
     </head>
     <body>
         <table class="center" ><tr><td>
             <center><img src="include/top.png"></center>
         </td></tr><tr><td> 
+    
 <?php
            
     if (!empty($_SESSION['user']))     //Jei vartotojas prisijungęs, valom logino kintamuosius ir rodom meniu
@@ -26,16 +27,18 @@ include("include/functions.php");
 		
 		inisession("part");   //   pavalom prisijungimo etapo kintamuosius
 		$_SESSION['prev']="index"; 
+                
         
         include("include/meniu.php"); //įterpiamas meniu pagal vartotojo rolę
 ?>
+
                 <div style="text-align: center;color:green">
                     <br><br>
                     <h1>Pradinis sistemos puslapis.</h1>
                     <h1>Projektą parengė Lukas Krupenkinas, IFF-6/5</h1>
                 </div><br>
       <?php
-          }                
+    }                
           else {   			 
               
               if (!isset($_SESSION['prev'])) inisession("full");             // nustatom sesijos kintamuju pradines reiksmes 
@@ -46,9 +49,10 @@ include("include/functions.php");
 		
                 echo "<table class=\"center\"><tr><td>";
           include("include/login.php");                    // prisijungimo forma
-                echo "</td></tr></table></div><br>";
+                echo "</td></tr></table></div><br><br>";
            
 		  }
 ?>
-            </body>
+        </table>
+    </body>
 </html>

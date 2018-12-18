@@ -14,59 +14,46 @@
 
     $_SESSION['prev']="register";
 ?>
-    <html>
+        <html>
         <head>  
-            <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8"> 
             <title>Registracija</title>
-            <link href="include/styles.css" rel="stylesheet" type="text/css" >
         </head>
         <body>   
-                    <table class="center"><tr><td><img src="include/top.png"></td></tr><tr><td> 
-                        <table style="border-width: 2px; border-style: dotted;"><tr><td>
-                           Atgal į [<a href="index.php">Pradžia</a>]</td></tr>
-				    </table>   
-                                    <div align="center">
-                                        <table> <tr><td>
-                                            <form action="procregister.php" method="POST" class="login">              
-                                                <center style="font-size:18pt;"><b>Registracija</b></center>
-										
-								<p style="text-align:left;">Slapyvardis:<br>
-                                                                <input class ="s1" name="name" type="text" value="<?php echo $_SESSION['name_login'];  ?>"><br>
-           							<?php echo $_SESSION['name_error']; ?>
-        							</p>
-                                                                
-                                                                <p style="text-align:left;">E-paštas:<br>
-                                                                <input class ="s1" name="email" type="text" value="<?php echo $_SESSION['mail_login']; ?>"><br>
-                                                                <?php echo $_SESSION['mail_error']; ?>
-                                                                </p>  
-                                    
-                                                                <p style="text-align:left;">Slaptažodis:<br>
-          							<input class ="s1" name="pass" type="password" value="<?php echo $_SESSION['pass_login']; ?>"><br>
-                                                                <?php echo $_SESSION['pass_error']; ?>
-        							</p> 
-                                                                
-									<?php
-										 if ($_SESSION['ulevel'] == $user_roles[ADMIN_LEVEL] )
-										{echo "<p style=\"text-align:left;\">Rolė<br>";
-										 echo "<select name=\"role\">";
-   									   	 foreach($user_roles as $x=>$x_value)
-  											{echo "<option ";
-        	 									if ($x == DEFAULT_LEVEL) echo "selected ";
-             									echo "value=\"".$x_value."\" ";
-         	 									echo ">".$x."</option></p>";
-											}
-										}
-									?>
-                      	
-                                    <p style="text-align:left;">
-                                    <input type="submit" value="Registruotis">
-                                    </p>
-                                    </form>
-                                    </td></tr>
-			                    </table>
-                             </div>
-                </td></tr>
-                </table>           
+            <table class="center"><tr><td><img src="include/top.png"></td></tr><tr><td><br>
+                                <table class="center" style="border-width: 2px;"><tr><td>
+                                
+                                <div class="container">
+                                    <h1 class="form-heading">Registracijos langas</h1>
+                                        <div class="login-form">
+                                            <div class="main-div">
+                                                <div class="panel">
+                                                    <p>Įveskite vartotojo vardą ir slaptažodį</p>
+                                                </div>
+                                                <form action="procregister.php" method="POST"> 
+                                                    <div class="form-group">
+                                                        <input type="text" name="name" class="form-control" id="inputUsername" placeholder="Vartotojo vardas"/>
+                                                        <?php echo $_SESSION['name_error'];?>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" name="email" class="form-control" id="inputPassword" placeholder="El. paštas"/>
+                                                        <?php echo $_SESSION['mail_error']; ?>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" name="pass" class="form-control" id="inputPassword" placeholder="Slaptažodis"/>
+                                                        <?php echo $_SESSION['pass_error']; ?>
+                                                    </div>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-sm"><button type="submit" name="registracija" class="btn btn-primary">Registruotis</button></div>
+                                                            <div class="col-sm"><input type="button" value="Pradinis puslapis" name="registracija" onclick="location.href='index.php'" class="btn btn-primary"/></div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                                               
+                                            </div>
+                                        </div>          
+                                </div>
+                        </td></tr>
+                </table><br><br>          
         </body>
     </html>
-   

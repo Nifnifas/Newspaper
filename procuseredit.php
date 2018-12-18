@@ -17,7 +17,7 @@ session_start();
   $_SESSION['mail_error']="";
   $_SESSION['passn_error']="";
   $user=$_SESSION['user'];
-  $pass=$_POST['pass'];$_SESSION['pass_login']=$pass;    //senas
+  $pass=$_POST['oldpass'];$_SESSION['pass_login']=$pass;    //senas
   $passn=$_POST['passn'];$_SESSION['passn_login']=$passn;   //naujas
   $mail=$_POST['email']; $_SESSION['mail_login']=$mail; 
 

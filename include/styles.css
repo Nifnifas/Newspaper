@@ -11,10 +11,11 @@ table.center {
     margin-top: 0px;
     border-width: 3px;
     border-style: solid;
-    border-color: grey;
+    border-color: white;
     padding: 1px;
     background-color: white;                
 }
+
 table.backlink {  
     margin-left:auto; 
     margin-right:auto;
@@ -22,8 +23,8 @@ table.backlink {
     margin-top: 0px;
     border-width: 13px;
     border-style: solid;
-    border-color: red;    
-    background-color: cyan;   
+    border-color: white;    
+    background-color: white;   
 }
 body {
     text-align:center;
