@@ -23,6 +23,7 @@
         $user=$_SESSION['user'];
         $userid = $_SESSION['userid'];
         $userlevel=$_SESSION['ulevel'];
+        $_SESSION['prev'] = "articlesList.php";
 
 
         $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
@@ -31,8 +32,7 @@
                         . " ORDER BY article_id ASC";
                 $result = mysqli_query($db, $query);
                 if (!$result || (mysqli_num_rows($result) < 1))  
-                                {echo "Straipsnių nėra!";  
-                                    echo "<table class=\"center\" style=\"border-color: white;\"><br><br><tr><td>Straipsnių nėra!</td></tr></table><br>";exit;}
+                                {echo "<table class=\"center\" style=\"border-color: white;\"><br><br><tr><td>Straipsnių nėra!</td></tr></table><br>";exit;}
 ?>
     <table class="center" style="border-color: white;"><br><br><tr><td>
     <?php

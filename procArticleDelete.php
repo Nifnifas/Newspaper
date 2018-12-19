@@ -22,8 +22,14 @@ if (!$conn) {
 
 $sql = "DELETE FROM " . TBL_ARTICLES . " WHERE article_id= $_POST[article_id]";
 if(mysqli_query($conn, $sql)){
-    echo "Records were deleted successfully.";
-    header( "refresh:1;url=articlesList.php");
+    echo "Straipsnis ištrintas sėkmingai!";
+    if($_SESSION['prev'] == "articlesList.php"){
+            header( "refresh:1;url=articlesList.php");
+    }
+    else{
+            header( "refresh:1;url=newArticlesList.php");
+    }
+
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }

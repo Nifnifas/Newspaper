@@ -1,3 +1,11 @@
+<html>
+    <head>
+        <title>Vartotojų valdymas</title>
+    </head>
+    <body>
+        <table class="center" ><tr><td>
+            <center><img src="include/top.png"></center>
+            </td></tr><tr><td>
 <?php
 // admin.php
 // vartotojų įgaliojimų keitimas ir naujo vartotojo registracija, jei leidžia nustatymai
@@ -5,34 +13,20 @@
 // sužymėjus pakeitimus į procadmin.php, bus dar perklausta
 
 session_start();
-include("include/nustatymai.php");
+include("include/meniu.php");
 include("include/functions.php");
 // cia sesijos kontrole
 if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] != $user_roles[ADMIN_LEVEL]))   { header("Location: logout.php");exit;}
 $_SESSION['prev']="admin";
 ?>
 
-<html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
-        <title>Administratoriaus sąsaja</title>
-        <link href="include/styles.css" rel="stylesheet" type="text/css" >
-    </head>
-    <body>
-        <table class="center" ><tr><td>
-            <center><img src="include/top.png"></center>
-            </td></tr><tr><td>
-		<center><font size="5">Vartotojų registracija, peržiūra ir įgaliojimų keitimas</font></center></td></tr></table> <br>
-		<center><b><?php echo $_SESSION['message']; ?></b></center>
 		<form name="vartotojai" action="procadmin.php" method="post">
-	    <table class="center" style=" width:75%; border-width: 2px; border-style: dotted;">
-		         <tr><td width=30%><a href="index.php">[Atgal]</a></td><td width=30%> 
+                    <br>
 	<?php
-		   if ($uregister != "self") echo "<a href=\"register.php\"><b>Registruoti naują vartotoją<b></a><td>";
-		   else echo "</td>";
+		   if ($uregister != "self") echo "<center><a href=\"register.php\"><b>Registruoti naują vartotoją<b></a></center>";
 	?>
-		   
-			<td width="30%">Atlikite reikalingus pakeitimus ir</td><td width="10%"> <input type="submit" value="Vykdyti"></td></tr></table> <br> 
+                    <br>
+
 <?php
     
 	$db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
@@ -73,6 +67,8 @@ $_SESSION['prev']="admin";
    }
 ?>
         </table>
-        <br> <input type="submit" value="Vykdyti">
+                    <br> <center><input type="submit" class="btn btn-primary" value="Vykdyti"></center><br>
+                                </td></tr>
+                </table><br><br>
         </form>
     </body></html>
