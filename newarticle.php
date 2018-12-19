@@ -4,7 +4,7 @@
     </head>
     <body>
         
-        <table class="center"><tr><td><img src="include/top.png"></td></tr><tr><td><br>
+        <table class="center"><tr><td><img src="include/topB.png"></td></tr><tr><td><br>
                                 
 <?php
 // operacija1.php
@@ -56,7 +56,7 @@ include("include/meniu.php");
                                                     <div class="form-group">
                                                        <?php include("include/summerNote.php");?>
                                                     </div>
-                                                    <button type="submit" name="submit" class="btn btn-primary">Įkelti</button>
+                                                    <center><button type="submit" name="submit" class="btn btn-primary">Įkelti</button></center>
                                                 </form>                       
                                             </div>
                                         </div>          

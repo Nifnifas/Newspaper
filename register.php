@@ -19,7 +19,7 @@
             <title>Registracija</title>
         </head>
         <body>   
-            <table class="center"><tr><td><img src="include/top.png"></td></tr><tr><td><br>
+            <table class="center"><tr><td><img src="include/topB.png"></td></tr><tr><td><br>
                                 <table class="center" style="border-width: 2px;"><tr><td>
                                 
                                 <div class="container">

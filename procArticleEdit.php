@@ -17,6 +17,7 @@ session_start();
   $category = $_POST['category'];
   $title = $_POST['title'];
   $text = $_POST['text'];
+  $status = "1";
 // Create connection
 $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 // Check connection
@@ -24,7 +25,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 	
-$sql = "UPDATE " . TBL_ARTICLES . " SET `category`= '$category', `title`= '$title', `text`= '$text' WHERE `article_id` = '$id'";
+$sql = "UPDATE " . TBL_ARTICLES . " SET `category`= '$category', `title`= '$title', `text`= '$text', `statusas` = '$status' WHERE `article_id` = '$id'";
 
 if(mysqli_query($conn, $sql)){
     echo "Records were edited successfully.";

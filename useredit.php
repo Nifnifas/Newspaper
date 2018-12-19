@@ -5,7 +5,7 @@
             <link href="include/styles.css" rel="stylesheet" type="text/css" >
         </head>
         <body>   
-            <table class="center"><tr><td> <img src="include/top.png"> </td></tr><tr><td> 
+            <table class="center"><tr><td> <img src="include/topB.png"> </td></tr><tr><td> 
                 <?php 
                 // useredit.php 
                 // vartotojas gali pasikeisti slaptažodį ar email
@@ -14,9 +14,6 @@
                 session_start();
                 // sesijos kontrole
                 include("include/meniu.php");
-                if (!isset($_SESSION['prev']) || (($_SESSION['prev'] != "index") && ($_SESSION['prev'] != "procuseredit")  && ($_SESSION['prev'] != "useredit")))
-                {header("Location: logout.php");exit;
-                }
                 if ($_SESSION['prev'] == "index")								  
                         {$_SESSION['mail_login'] = $_SESSION['umail'];
                         $_SESSION['passn_error'] = "";      // papildomi kintamieji naujam password įsiminti
@@ -44,7 +41,7 @@
                                                         <?php echo $_SESSION['passn_error']; ?>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="email" name="email" class="form-control" id="inputPassword" value="<?php echo $_SESSION['mail_login']; ?>"/>
+                                                        <input type="email" name="email" class="form-control" id="inputPassword" placeholder="El. paštas" value="<?php echo $_SESSION['mail_login']; ?>"/>
                                                         <?php echo $_SESSION['mail_error']; ?>
                                                     </div>
                                                     <center><button type="submit" name="userEdit" class="btn btn-primary">Keisti duomenis</button><center> 

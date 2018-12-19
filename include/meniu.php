@@ -26,15 +26,15 @@ $role="";
             <a class="nav-link" href="index.php">Pradinis<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="articlesList.php">Straipsniai</a>
+            <a class="nav-link" href="articlesList.php?">Straipsniai</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Kategorijos
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="articlesList.php?sportas">Sportas</a>
+              <a class="dropdown-item" href="articlesList.php?mokslas">Mokslas</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
@@ -59,7 +59,11 @@ $role="";
               <div class="dropdown-menu">
                 <p class="dropdown-item" align="center">Jūs esate: <b><?php echo "$role";?></b></p>
                 <div class="dropdown-divider"></div>
+                <?php if($userlevel != 5){
+                 ?>   
+                
                 <a class="dropdown-item" href="newArticle.php">Įkelti straipsnį</a>
+                <?php } ?>
                 <a class="dropdown-item" href="myArticles.php">Mano straipsniai</a>
                 <a class="dropdown-item" href="useredit.php">Keisti paskyros duomenis</a>
                 <div class="dropdown-divider"></div>

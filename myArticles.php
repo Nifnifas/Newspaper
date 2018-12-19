@@ -6,7 +6,7 @@
     </head>
     <body>
         <table class="center" ><tr><td>
-            <center><img src="include/top.png"></center>
+            <center><img src="include/topB.png"></center>
         </td></tr><tr><td> 
                 
         <?php
@@ -36,22 +36,30 @@
 
 
                 <table class="center" style="border-color: white;"><br><br><tr><td>
-<?php
-    $count = 1;
-    echo "<table>"; // start a table tag in the HTML
-    echo "<tr><td>Nr.</td><td>Antraštė</td><td>Kategorija</td><td>Data</td><td>Būsena</td></tr>";
-    while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
-        if($userid == $row['fk_user_id']){
-            echo "<tr><td>" . $count . "</td><td>" . $row['title'] . "</td><td>" .$row['category_name']
-                . "</td><td>" .$row['time_stamp'] . "</td><td>" .$row['statusas_name']
-                . "</td><td>" . "<form action='read.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button type='submit' name='submit'>Skaityti straipsnį</button></form>" 
-                . "</td><td>" . "<form action='editArticle.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button type='submit' name='submit'>Redaguoti</button></form>" 
-                . "</td><td>" . "<form action=\"procArticleDelete.php\" method=\"post\" onsubmit=\"return confirm('Ar tikrai norite ištrinti šį straipsnį?');\"><input type=\"submit\" value =\"Šalinti\"/><input type=\"hidden\" name=\"article_id\" value=\"$row[article_id]\">"
-                . "</form></td></tr>";
-            $count++;
-        }
-    }
-    echo "</table>";
+
+ 
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col" style="text-align: center">Mano straipsniai</th>
+                  <th scope="col" style="text-align: center">Įkėlimo data</th>
+                  <th scope="col" style="text-align: center">Statusas</th>
+                  <th colspan="2" style="text-align: center">Funkcijos</th>
+                </tr>
+              </thead>
+              <tbody> <?php
+                        $count = 1;
+                        while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
+                            echo "<tr><th scope=\"row\"><button class='btn btn-link' disabled>" . $count++ . "</button></th><td>";
+                            echo "<form action='read.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button class='btn btn-link' type='submit' name='submit'>$row[title]</button></form></td><td style=\"text-align: center\">";
+                            echo "<button class='btn btn-link' disabled><b>" . $row['time_stamp'] . "</b></td><td style=\"text-align: center\">";
+                            echo "<button class='btn btn-link' disabled><b>" . $row['statusas_name'] . "</b></td><td>";
+                            echo "<form action='editArticle.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button class=\"btn btn-outline-warning\" type='submit' name='submit'>Redaguoti</button></form>"
+                                         ."</td><td>" . "<form action=\"procArticleDelete.php\" method=\"post\" onsubmit=\"return confirm('Ar tikrai norite ištrinti šį straipsnį?');\"><button class=\"btn btn-outline-danger\" type=\"submit\">Šalinti</button><input type=\"hidden\" name=\"article_id\" value=\"$row[article_id]\">";
+                            echo "</form></td></tr>";
+                        }
+            echo "</tbody></table>"; // start a table tag in the HTML
     mysqli_close($db);
     
     if($count-- == 0){

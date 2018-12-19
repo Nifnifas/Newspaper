@@ -6,7 +6,7 @@
     </head>
     <body>
         <table class="center" ><tr><td>
-            <center><img src="include/top.png"></center>
+            <center><img src="include/topB.png"></center>
 <?php
 // procadmin.php  kai adminas keičia vartotojų įgaliojimus ir padaro atžymas lentelėje per admin.php
 // ji suformuoja numatytų pakeitimų aiškią lentelę ir prašo patvirtinimo, toliau į procadmindb, kuri įrašys į DB

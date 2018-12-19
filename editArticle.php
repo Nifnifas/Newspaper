@@ -4,7 +4,7 @@
     </head>
     <body>
         <table class="center" ><tr><td>
-            <center><img src="include/top.png"></center>
+            <center><img src="include/topB.png"></center>
         <br>
         <?php
         // operacija1.php
@@ -17,7 +17,7 @@
         $_SESSION['art'] = $_POST['article_id'];
 
         $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-                $query = "SELECT article_id, category, title, text "
+                $query = "SELECT article_id, category, title, text, statusas "
                     . "FROM " . TBL_ARTICLES . ", " . TBL_CATEGORIES . " WHERE article_id = $_SESSION[art]  AND category = category_id";
                 $result = mysqli_query($db, $query);
                 if (!$result || (mysqli_num_rows($result) < 1))  
@@ -66,7 +66,7 @@
                                                     <div class="form-group">
                                                        <?php include("include/summerNote.php");?>
                                                     </div>
-                                                    <button type="submit" name="submit" class="btn btn-primary">Įkelti</button>
+                                                    <center><button type="submit" name="submit" class="btn btn-primary">Įkelti</button></center>
                                                 </form>                       
                                             </div>
                                         </div>          
