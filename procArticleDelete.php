@@ -1,3 +1,10 @@
+<html>
+    <head>
+        <title>IS Zurnalo redakcija</title>
+    </head>
+    <body>
+        
+
 <?php
 // procregister.php tikrina registracijos reikšmes
 // įvedimo laukų reikšmes issaugo $_SESSION['xxxx_login'], xxxx-name, pass, mail
@@ -40,4 +47,5 @@ mysqli_close($conn);
 //header("Location:articles.php");exit;
 ?>
   
-  
+      </body>
+</html>

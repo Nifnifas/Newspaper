@@ -1,3 +1,11 @@
+<html>
+    <head>
+        <title>IS Zurnalo redakcija</title>
+    </head>
+    <body>
+        
+    </body>
+</html>
 <?php
 // logout.php naikina sesija ir cookius
 session_start();

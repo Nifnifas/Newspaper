@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Naujausi straipsniai</title>
+        <title>Straipsniai</title>
     </head>
     <body>
         <table class="center"><tr><td>

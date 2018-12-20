@@ -1,3 +1,11 @@
+<html>
+    <head>
+        <title>IS Zurnalo redakcija</title>
+    </head>
+    <body>
+        
+    </body>
+</html>
 <?php
 // procuseredit.php tikrina paskyros keitimo reikšmes
 // įvestas reikšmes išsaugo $_SESSION['xxxx_login']

@@ -1,3 +1,11 @@
+<html>
+    <head>
+        <title>IS Zurnalo redakcija</title>
+    </head>
+    <body>
+        
+    </body>
+</html>
 <?php
 // proclogin.php tikrina prisijungimo reikšmes
 // formoje įvestas reikšmes išsaugo $_SESSION['xxxx_login']

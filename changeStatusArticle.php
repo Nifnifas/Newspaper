@@ -1,3 +1,12 @@
+<html>
+    <head>
+        <title>IS Zurnalo redakcija</title>
+    </head>
+    <body>
+        
+    </body>
+</html>
+
 <?php
 // procregister.php tikrina registracijos reikšmes
 // įvedimo laukų reikšmes issaugo $_SESSION['xxxx_login'], xxxx-name, pass, mail

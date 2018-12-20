@@ -1,3 +1,11 @@
+<html>
+    <head>
+        <title>IS Zurnalo redakcija</title>
+    </head>
+    <body>
+        
+    </body>
+</html>
 <?php
 // procadmindb.php   admino nurodytus pakeitimus padaro DB
 // $_SESSION['ka_keisti'] kuriuos vartotojus, $_SESSION['pakeitimai'] į kokį userlevel

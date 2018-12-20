@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Straipsnio skaitymas</title>        
+        <title>Straipsnio redagavimas</title>        
     </head>
     <body>
         <table class="center" ><tr><td>
