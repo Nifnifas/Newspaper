@@ -12,7 +12,8 @@ session_start();
 
   include("include/nustatymai.php");
   include("include/functions.php");
-  
+if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] != $user_roles[ADMIN_LEVEL]))   { header("Location: logout.php");exit;}
+  $_SESSION['prev'] = "delete_comment.php";
 // Create connection
 $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 // Check connection

@@ -19,6 +19,8 @@ session_start();
 //{ header("Location:articles.php");exit;}
 include("include/meniu.php");
 include("include/functions.php");
+if (!isset($_SESSION['prev']))   { header("Location: logout.php");exit;}
+$_SESSION['prev'] = "read.php"; 
 $user=$_SESSION['user'];
 $userid = $_SESSION['userid'];
 $userlevel=$_SESSION['ulevel'];

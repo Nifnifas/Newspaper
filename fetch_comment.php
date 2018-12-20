@@ -8,8 +8,10 @@ include("include/functions.php");
 $user=$_SESSION['user'];
 $userid = $_SESSION['userid'];
 $userlevel=$_SESSION['ulevel'];
+if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL]))   { header("Location: logout.php");exit;}
+$_SESSION['prev'] = "fetch_comment.php"; 
 //$connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-$connect = new PDO('mysql:host=localhost;dbname=newspaper', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=lukkru2', 'lukkru2', 'Bijaerov3ceebair');
 
 $query = "SELECT username, date, comment, comment_id FROM " . TBL_COMMENTS . ", " . TBL_USERS . 
         " WHERE sender_id = userid AND parent_comment_id = '0' AND fk_article_id = '$_SESSION[art]' ORDER BY comment_id DESC";

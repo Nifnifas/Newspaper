@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
   </head>
   <body>
-      <textarea id="summernote" name="text" value=<?php if(!empty($row['text'])){echo "$row[text]";}?>></textarea>
+      <textarea id="summernote" name="text" required="" value=<?php if(!empty($row['text'])){echo "$row[text]";}?>></textarea>
     <script>
       $('#summernote').summernote({
         placeholder: 'Straipsnio tekstas',
@@ -21,5 +21,6 @@
         $(".dropdown-toggle").dropdown();
       });
     </script>
+
   </body>
 </html>

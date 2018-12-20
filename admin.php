@@ -55,7 +55,7 @@ $_SESSION['prev']="admin";
          	 echo ">".$x."</option>";
         	 }
 		if (!$yra)
-        {echo "<option selected value=".$level.">Neegzistuoja=".$level."</option>";}
+        {echo "<option selected value=".$level.">Botas=".$level."</option>";}
         $UZBLOKUOTAS=UZBLOKUOTAS; echo "<option ";
         if ($level == UZBLOKUOTAS) echo "selected ";
           echo "value=".$UZBLOKUOTAS." ";

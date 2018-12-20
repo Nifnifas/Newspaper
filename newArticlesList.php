@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Demo projektas</title>
+        <title>Nepatvirtinti straipsniai</title>
     </head>
     <body>
         <table class="center" ><tr><td>
@@ -11,17 +11,17 @@
 // skirtapakeisti savo sudaryta operacija pratybose
 
 session_start();
-// cia sesijos kontrole
-//if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
-//{ header("Location:articles.php");exit;}
 include("include/meniu.php");
 include("include/functions.php");
+// cia sesijos kontrole
+if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] != $user_roles[ADMIN_LEVEL]))   { header("Location: logout.php");exit;}
 $_SESSION['prev'] = "newArticlesList.php";
 
 $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+
 	$query = "SELECT article_id, category_name, title, text, username, time_stamp, statusas_name "
             . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . ", " . TBL_STATUS . " WHERE fk_user_id = userid AND category = category_id"
-                . " AND statusas = status_id AND statusas != 2 ORDER BY article_id ASC";
+                . " AND statusas = status_id AND statusas != 2 AND statusas != 4 ORDER BY article_id ASC";
 	$result = mysqli_query($db, $query);
 	if (!$result || (mysqli_num_rows($result) < 1))  
                                 {echo "<table class=\"center\" style=\"border-color: white;\"><br><br><tr><td>Nepatvirtintų straipsnių nėra!</td></tr></table><br>";exit;}

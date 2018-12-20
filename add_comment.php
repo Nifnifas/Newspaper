@@ -6,8 +6,10 @@ session_start();
 //{ header("Location:articles.php");exit;}
 include("include/nustatymai.php");
 include("include/functions.php");
+if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL]))   { header("Location: logout.php");exit;}
+$_SESSION['prev'] = "add_comment.php"; 
 //$connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-$connect = new PDO('mysql:host=localhost;dbname=newspaper', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=lukkru2', 'lukkru2', 'Bijaerov3ceebair');
 
 $error = '';
 $comment_name = '';

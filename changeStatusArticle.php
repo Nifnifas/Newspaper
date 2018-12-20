@@ -12,7 +12,8 @@ session_start();
 
   include("include/nustatymai.php");
   include("include/functions.php");
- 
+ if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] != $user_roles[ADMIN_LEVEL]))   { header("Location: logout.php");exit;}
+  $_SESSION['prev'] = "changeStatusArticle.php";
   $id = $_POST['article_id'];
   $status = $_POST['status_id'];
 

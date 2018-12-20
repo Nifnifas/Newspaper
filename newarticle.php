@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Straipsnio įkėlimas</title>
+                <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
     </head>
     <body>
         
@@ -15,6 +16,8 @@ session_start();
 
 
 include("include/meniu.php");
+if (!isset($_SESSION['prev']) || $_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL] || $_SESSION['ulevel'] == 5)   { header("Location: logout.php");exit;}
+        $_SESSION['prev'] = "newarticle.php";
 ?>
   <br><br><table class="center" style="border-width: 2px;"><tr><td>                              
                                 <div class="container">
@@ -30,6 +33,7 @@ include("include/meniu.php");
                                                             
                                                                 <?php 
                                                                     $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+                                                                    $conn->set_charset("utf8");
                                                                     if (!$conn) {
                                                                         die("Connection failed: " . mysqli_connect_error());
                                                                     }

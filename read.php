@@ -19,6 +19,8 @@
                 //{ header("Location:articles.php");exit;}
                 include("include/meniu.php");
                 include("include/functions.php");
+                if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL]))   { header("Location: logout.php");exit;}
+                $_SESSION['prev'] = "read.php"; 
                 $user=$_SESSION['user'];
                 $userid = $_SESSION['userid'];
                 $userlevel=$_SESSION['ulevel'];

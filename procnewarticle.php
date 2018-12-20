@@ -12,7 +12,8 @@ session_start();
 
   include("include/nustatymai.php");
   include("include/functions.php");
- 
+         if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL]))   { header("Location: logout.php");exit;}
+        $_SESSION['prev'] = "procnewarticle.php";
   $category = $_POST['category'];
   $title = $_POST['title'];
   $text = $_POST['text'];

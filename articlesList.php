@@ -1,8 +1,6 @@
 <html>
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
-        <title>Demo projektas</title>
-        <link href="include/styles.css" rel="stylesheet" type="text/css" >
+        <title>Naujausi straipsniai</title>
     </head>
     <body>
         <table class="center"><tr><td>
@@ -20,6 +18,8 @@
         //include("include/nustatymai.php");
         include("include/functions.php");
         include("include/meniu.php");
+        if (!isset($_SESSION['prev']))   { header("Location: logout.php");exit;}
+        $_SESSION['prev'] = "articlesList.php"; 
         $user=$_SESSION['user'];
         $userid = $_SESSION['userid'];
         $userlevel=$_SESSION['ulevel'];
@@ -34,7 +34,7 @@
         if($_SERVER['QUERY_STRING'] == "maistas"){
             $value = 6;
         }
-        if($_SERVER['QUERY_STRING'] == "kultura"){
+        if($_SERVER['QUERY_STRING'] == "menas"){
             $value = 5;
         }
         if($_SERVER['QUERY_STRING'] == "gyvenimas"){
@@ -58,11 +58,20 @@
                 if (!$result || (mysqli_num_rows($result) < 1))  
                                 {echo "<table class=\"center\" style=\"border-color: white;\"><br><br><tr><td>Straipsnių nėra!</td></tr></table><br>";exit;}
         }
-        else{
+        if($value == 0){
             $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
                 $query = "SELECT article_id, category_name, title, text, username, time_stamp, statusas, views "
                     . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . " WHERE fk_user_id = userid AND category = category_id AND statusas = 2"
-                        . " ORDER BY time_stamp DESC";
+                        . " ORDER BY time_stamp DESC LIMIT 10";
+                $result = mysqli_query($db, $query);
+                if (!$result || (mysqli_num_rows($result) < 1))  
+                                {echo "<table class=\"center\" style=\"border-color: white;\"><br><br><tr><td>Straipsnių nėra!</td></tr></table><br>";exit;}
+        }
+                if($_SERVER['QUERY_STRING'] == "skaitomiausi"){
+            $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+                $query = "SELECT article_id, category_name, title, text, username, time_stamp, statusas, views "
+                    . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . " WHERE fk_user_id = userid AND category = category_id AND statusas = 2"
+                        . " ORDER BY views DESC  LIMIT 5";
                 $result = mysqli_query($db, $query);
                 if (!$result || (mysqli_num_rows($result) < 1))  
                                 {echo "<table class=\"center\" style=\"border-color: white;\"><br><br><tr><td>Straipsnių nėra!</td></tr></table><br>";exit;}
@@ -73,13 +82,14 @@
 ?>
     <table class="center" style="border-color: white;"><br><br><tr><td>
     <?php
+    $header = strtoupper($_SERVER['QUERY_STRING']);
         $cc = 1;
         if($userlevel == $user_roles[ADMIN_LEVEL]){ ?>
             <table class="table">
               <thead class="thead-light">
                 <tr>
                   <th scope="col"></th>
-                  <th scope="col" style="text-align: center">Naujausi straipsniai</th>
+                  <th scope="col" style="text-align: center"><?php echo "$header";?></th>
                   <th scope="col">Peržiūros</th>
                   <th colspan="2" style="text-align: center">Funkcijos</th>
                 </tr>

@@ -1,8 +1,6 @@
 <html>
-        <head>  
-            <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8"> 
-            <title>Registracija</title>
-            <link href="include/styles.css" rel="stylesheet" type="text/css" >
+        <head> 
+            <title>Keisti duomenis</title>
         </head>
         <body>   
             <table class="center"><tr><td> <img src="include/topB.png"> </td></tr><tr><td> 
@@ -14,6 +12,7 @@
                 session_start();
                 // sesijos kontrole
                 include("include/meniu.php");
+                if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL]))   { header("Location: logout.php");exit;}
                 if ($_SESSION['prev'] == "index")								  
                         {$_SESSION['mail_login'] = $_SESSION['umail'];
                         $_SESSION['passn_login'] = ""; }  //visos kitos turetų būti tuščios

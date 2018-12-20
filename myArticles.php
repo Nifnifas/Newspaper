@@ -1,8 +1,6 @@
 <html>
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
-        <title>Demo projektas</title>
-        <link href="include/styles.css" rel="stylesheet" type="text/css" >
+        <title>Mano straipsniai</title>
     </head>
     <body>
         <table class="center" ><tr><td>
@@ -19,6 +17,9 @@
         //{ header("Location:articles.php");exit;}
         include("include/meniu.php");
         include("include/functions.php");
+        // cia sesijos kontrole
+        if (!isset($_SESSION['prev']) || $_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL] || $_SESSION['ulevel'] == 5)   { header("Location: logout.php");exit;}
+        $_SESSION['prev'] = "myArticles.php";
         $user=$_SESSION['user'];
         $userid=$_SESSION['userid'];
 

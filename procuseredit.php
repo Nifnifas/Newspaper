@@ -7,8 +7,8 @@
 
 session_start(); 
 // cia sesijos kontrole
-//if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "useredit"))
-//{ header("Location: logout.php");exit;}
+if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "useredit"))
+{ header("Location: logout.php");exit;}
 
   include("include/nustatymai.php");
   include("include/functions.php");

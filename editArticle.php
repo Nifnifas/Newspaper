@@ -13,7 +13,8 @@
         session_start();
         // cia sesijos kontrole
         include("include/meniu.php");
-
+        if (!isset($_SESSION['prev']) || $_SESSION['ulevel'] < $user_roles[DEFAULT_LEVEL] || $_SESSION['ulevel'] == 5)   { header("Location: logout.php");exit;}
+        $_SESSION['prev'] = "editArticle.php"; 
         $_SESSION['art'] = $_POST['article_id'];
 
         $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
@@ -40,6 +41,7 @@
                                                             <input class ="s1" name="id" type="text" value="<?php echo $row['article_id']; ?>" hidden/>
                                                                 <?php
                                                                     $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+                                                                    $conn->set_charset("utf8");
                                                                     if (!$conn) {
                                                                         die("Connection failed: " . mysqli_connect_error());
                                                                     }
