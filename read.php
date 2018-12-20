@@ -71,6 +71,7 @@
      <input type="hidden" name="comment_id" id="comment_id" value="0" />
      <center><input type="submit" name="submit" onclick="refreshPage();" id="submit" class="btn btn-info" value="Komentuoti" /></center>
    </form>
+    <div id="output" align="center" style="color: red;"></div>
          
    <span id="comment_message"></span>
    <br />
@@ -80,7 +81,12 @@
 </table>
 <script>
 function refreshPage(){
-    window.location.reload();
+    if (!$("#comment_content").val()) {
+    $('#output').html('Užpildykite komentarui skirtą lauką!');
+    }
+    else{
+        window.location.reload();
+    }
 }
 </script>
 <script>
