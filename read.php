@@ -69,7 +69,7 @@
     </div>
     <div class="form-group">
      <input type="hidden" name="comment_id" id="comment_id" value="0" />
-     <center><input type="submit" name="submit" id="submit" onclick="refreshPage();" class="btn btn-info" value="Komentuoti" /></center>
+     <center><input type="submit" name="submit" onclick="refreshPage();" id="submit" class="btn btn-info" value="Komentuoti" /></center>
    </form>
          
    <span id="comment_message"></span>
@@ -81,7 +81,7 @@
 <script>
 function refreshPage(){
     window.location.reload();
-} 
+}
 </script>
 <script>
 $(document).ready(function(){
@@ -96,7 +96,7 @@ $(document).ready(function(){
    dataType:"JSON",
    success:function(data)
    {
-    if(data.error != '')
+    if(data.error !== '')
     {
      $('#comment_form')[0].reset();
      $('#comment_message').html(data.error);
@@ -120,13 +120,18 @@ $(document).ready(function(){
    }
   })
  }
+ 
+ $('#submit').click(function(){
+      $('#comment_content').load('add_comment.php #comment_content', function() {
+           /// can add another function here
+      });
+   });
 
  $(document).on('click', '.reply', function(){
   var comment_id = $(this).attr("id");
   $('#comment_id').val(comment_id);
-  $('#comment_name').focus();
+  $('#comment_content').focus();
  });
- 
 });
 </script>
         

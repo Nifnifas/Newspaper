@@ -28,10 +28,10 @@ if (!$conn) {
 $sql = "UPDATE " . TBL_ARTICLES . " SET `category`= '$category', `title`= '$title', `text`= '$text', `statusas` = '$status' WHERE `article_id` = '$id'";
 
 if(mysqli_query($conn, $sql)){
-    echo "Records were edited successfully.";
-    header( "refresh:1;url=articlesList.php");
+    echo "<br><br><br><h3>Straipsnis atnaujintas sėkmingai! Laukite redaktoriaus patvirtinimo.</h3>";
+    header( "refresh:2;url=myArticles.php");
 } else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+    echo "Klaida: $sql. " . mysqli_error($conn);
 }
 
 mysqli_close($conn);

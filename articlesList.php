@@ -25,6 +25,24 @@
         $userlevel=$_SESSION['ulevel'];
         $_SESSION['prev'] = "articlesList.php";
         $value = 0;
+        if($_SERVER['QUERY_STRING'] == "kriminalai"){
+            $value = 8;
+        }
+        if($_SERVER['QUERY_STRING'] == "politika"){
+            $value = 7;
+        }
+        if($_SERVER['QUERY_STRING'] == "maistas"){
+            $value = 6;
+        }
+        if($_SERVER['QUERY_STRING'] == "kultura"){
+            $value = 5;
+        }
+        if($_SERVER['QUERY_STRING'] == "gyvenimas"){
+            $value = 4;
+        }
+        if($_SERVER['QUERY_STRING'] == "verslas"){
+            $value = 3;
+        }
         if($_SERVER['QUERY_STRING'] == "mokslas"){
             $value = 2;
         }

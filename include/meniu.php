@@ -26,7 +26,7 @@ $role="";
             <a class="nav-link" href="index.php">Pradinis<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="articlesList.php?">Straipsniai</a>
+            <a class="nav-link" href="articlesList.php?">Naujausi straipsniai</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,8 +35,14 @@ $role="";
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="articlesList.php?sportas">Sportas</a>
               <a class="dropdown-item" href="articlesList.php?mokslas">Mokslas</a>
+              <a class="dropdown-item" href="articlesList.php?politika">Politika</a>
+              <a class="dropdown-item" href="articlesList.php?kriminalai">Kriminalai</a>
+              <a class="dropdown-item" href="articlesList.php?verslas">Verslas</a>
+              <a class="dropdown-item" href="articlesList.php?gyvenimas">Gyvenimas</a>
+              <a class="dropdown-item" href="articlesList.php?kultura">Kultūra</a>
+              <a class="dropdown-item" href="articlesList.php?maistas">Maistas</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Skaitomiausi</a>
             </div>
           </li>
 

@@ -20,18 +20,15 @@
         include("include/meniu.php");
         include("include/functions.php");
         $user=$_SESSION['user'];
-        $userid =$_SESSION['userid'];
+        $userid=$_SESSION['userid'];
 
         $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
                 $query = "SELECT article_id, category_name, fk_user_id, title, time_stamp, statusas_name "
-                    . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . ", " . TBL_STATUS . " WHERE fk_user_id = userid AND category = category_id AND statusas = status_id"
+                    . "FROM " . TBL_ARTICLES . ", " . TBL_USERS . ", " . TBL_CATEGORIES . ", " . TBL_STATUS . " WHERE fk_user_id = userid AND fk_user_id = '$userid' AND category = category_id AND statusas = status_id"
                         . " ORDER BY statusas_name ASC";
                 $result = mysqli_query($db, $query);
                 if (!$result || (mysqli_num_rows($result) < 1))  
-                                {echo "Straipsnių nėra!";  
-                                    echo "<table style=\"border-width: 2px; border-style: dotted;\"><tr><td>
-                 Atgal į [<a href=\"index.php\">Pradžia</a>]</td></tr>
-                </table><br>";exit;}
+                                {echo "<table class=\"center\" style=\"border-color: white;\"><br><br><tr><td>Jūs dar neturite savo straipsnių!</td></tr></table><br>";exit;}
         ?>
 
 

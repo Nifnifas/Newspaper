@@ -51,7 +51,7 @@ $sql = "INSERT INTO " . TBL_ARTICLES . " (
         )";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Straipsnis sėkmingai įkeltas. Laukite redaktoriaus patvirtinimo!";
+    echo "<br><br><br><h3>Straipsnis sėkmingai įkeltas. Laukite redaktoriaus patvirtinimo!</h3>";
     header( "refresh:2;url=myArticles.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

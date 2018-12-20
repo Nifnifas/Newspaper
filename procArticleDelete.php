@@ -22,13 +22,8 @@ if (!$conn) {
 
 $sql = "DELETE FROM " . TBL_ARTICLES . " WHERE article_id= $_POST[article_id]";
 if(mysqli_query($conn, $sql)){
-    echo "Straipsnis ištrintas sėkmingai!";
-    if($_SESSION['prev'] == "articlesList.php"){
-            header( "refresh:1;url=articlesList.php");
-    }
-    else{
-            header( "refresh:1;url=newArticlesList.php");
-    }
+    echo "<br><br><br><h3>Straipsnis ištrintas sėkmingai!</h3>";
+    header( "refresh:1;url=myArticles.php");
 
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);

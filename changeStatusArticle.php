@@ -26,7 +26,7 @@ if (!$conn) {
 $sql = "UPDATE " . TBL_ARTICLES . " SET `statusas`= '$status' WHERE `article_id` = '$id'";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Straipsnio statusas sėkmingai pakeistas!";
+    echo "<br><br><br><h3>Straipsnio statusas sėkmingai pakeistas!</h3>";
     header( "refresh:1;url=newArticlesList.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

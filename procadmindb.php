@@ -26,7 +26,7 @@ foreach ($_SESSION['ka_keisti'] as $user)
                    echo " DB klaida keičiant vartotojo įgaliojimus: " . $sql . "<br>" . mysqli_error($db);
 		               exit;}
   }}
-$_SESSION['message']="Pakeitimai atlikti sėkmingai";
-header("Location:admin.php");exit;
+echo "<br><br><br><h3>Pakeitimai atlikti sėkmingai!</h3>";
+header( "refresh:2;url=admin.php");
 
 ?>

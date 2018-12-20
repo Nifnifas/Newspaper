@@ -16,7 +16,6 @@
                 include("include/meniu.php");
                 if ($_SESSION['prev'] == "index")								  
                         {$_SESSION['mail_login'] = $_SESSION['umail'];
-                        $_SESSION['passn_error'] = "";      // papildomi kintamieji naujam password įsiminti
                         $_SESSION['passn_login'] = ""; }  //visos kitos turetų būti tuščios
                 $_SESSION['prev'] = "useredit"; 
                 ?>
@@ -38,7 +37,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="password" name="passn" class="form-control" placeholder="Naujas slaptažodis"/>
-                                                        <?php echo $_SESSION['passn_error']; ?>
+                                                        <?php echo $_SESSION['pass_error']; ?>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="email" name="email" class="form-control" id="inputPassword" placeholder="El. paštas" value="<?php echo $_SESSION['mail_login']; ?>"/>

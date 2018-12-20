@@ -37,8 +37,8 @@ session_start();
 				         if (!mysqli_query($db, $sql)) {
                    echo " DB klaida keiciant slaptazodi ir epasto adresa: " . $sql . "<br>" . mysqli_error($db);
 		               exit;}
-		            $_SESSION['message']="Paskyra pakeista";
-				} else {$_SESSION['message']="Nieko nekeitėt, paskyra nepakeista";}
+		            $_SESSION['message']="Paskyra sėkmingai atnaujinta!<br>Prisijunkite iš naujo.";
+				} else {$_SESSION['message']="Pakeitimų nerasta!";}
                 $_SESSION['user']="";
             //    session_regenerate_id(true);
       header("Location:index.php");exit;
@@ -47,7 +47,7 @@ session_start();
 	// jei neteisingas galiojantis, nieko daugiau netikrinom 
     }  
    // taisyti
-   $_SESSION['message']="Yra klaidų";
+   $_SESSION['message']="Blogai įvesti duomenys!";
   // session_regenerate_id(true);
    header("Location:useredit.php");exit;
 ?>

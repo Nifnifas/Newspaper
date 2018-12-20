@@ -22,13 +22,13 @@ if (!$conn) {
 $uql = "SELECT * FROM " . TBL_COMMENTS . " WHERE parent_comment_id = $_POST[comment_id]";
 $result = mysqli_query($conn, $uql);
 if (mysqli_num_rows($result) > 0){
-    echo "Klaida! Trinti šį komentarą galėsite tik tada, kai ištrinsite visus atsakymus į šį komentarą!";
-    header( "refresh:1;url=read.php");
+    echo "<br><br><br><h3>Klaida! Trinti šį komentarą galėsite tik tada, kai ištrinsite visus atsakymus į šį komentarą!</h3>";
+    header( "refresh:2;url=read.php");
 }
 else{
     $sql = "DELETE FROM " . TBL_COMMENTS . " WHERE comment_id = $_POST[comment_id]";
     if(mysqli_query($conn, $sql)){
-        echo "Komentaras ištrintas sėkmingai!";
+        echo "<br><br><br><h3>Komentaras ištrintas sėkmingai!</h3>";
         header( "refresh:1;url=read.php");
     }
 }
