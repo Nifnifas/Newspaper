@@ -28,13 +28,3 @@ define("EMAIL_FROM_ADDR", "demo@ktu.lt");
 define("EMAIL_WELCOME", false);
 
 ?>
-<html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <link href="include/styles.css" rel="stylesheet" type="text/css" >
-    </head>
-    <body></body>
-</html>
