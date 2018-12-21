@@ -36,10 +36,11 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
             <table class="table">
               <thead class="thead-light">
-                  <tr><th colspan="7" style="text-align: center">Nepatvirtinti straipsniai</th></tr>
+                  <tr><th colspan="8" style="text-align: center">Nepatvirtinti straipsniai</th></tr>
                 <tr>
                   <th scope="col"></th>
                   <th scope="col" style="text-align: center">Straipsnis</th>
+                  <th scope="col" style="text-align: center">Autorius</th>
                   <th scope="col">Kategorija</th>
                   <th scope="col" style="text-align: center">Statusas</th>
                   <th colspan="5" style="text-align: center">Funkcijos</th>
@@ -50,6 +51,7 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
                         while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
                             echo "<tr><th scope=\"row\"><button class='btn btn-link' disabled>" . $cc++ . "</button></th><td>";
                             echo "<form action='read.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><button class='btn btn-link' type='submit' name='submit'>$row[title]</button></form></td><td style=\"text-align: center\">";
+                            echo "<button class='btn btn-link' disabled><b style=\"color: brown\">" . $row['username'] . "</b></td><td style=\"text-align: center\">";
                             echo "<button class='btn btn-link' disabled><b style=\"color: blue\">" . $row['category_name'] . "</b></td><td style=\"text-align: center\">";
                             echo "<button class='btn btn-link' disabled><b>" . $row['statusas_name'] . "</b></td><td>";
                             echo "<form action='changeStatusArticle.php' method='POST'><input name='article_id' value='$row[article_id]' hidden><input name='status_id' value='2' hidden><button class=\"btn btn-outline-success\" type='submit' name='submit'>Patvirtinti</button></form>"
